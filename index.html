@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarkari Naukri - JaruriSuchna XYZ</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7ff;
+    margin: 0;
+    color: #222;
+  }
+
+  /* Header */
+  header {
+    background: #0b5ed7;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  /* Navigation */
+ nav {
+  background: #080502;
+  display: flex;           /* flexbox layout */
+  flex-wrap: wrap;         /* items wrap on small screens */
+  justify-content: center; /* center the nav items */
+  padding: 10px;
+  gap: 10px;               /* space between links */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: #0bd719;
+}
+
+@media (max-width: 600px) {
+  nav a {
+    flex: 1 1 100%;       /* full width links on small screens */
+    text-align: center;
+    margin: 4px 0;
+    font-size: 14px;
+  }
+}
+
+  /* Main Button */
+  .menu-container {
+    text-align: center;
+    margin: 30px 0;
+  }
+  .main-btn {
+    background: #0b5ed7;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .main-btn:hover {
+    background: #073d94;
+  }
+
+  /* Dropdown */
+  .dropdown {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+    animation: fadeIn 0.4s ease;
+  }
+  .dropdown button {
+    background: white;
+    border: 1px solid #ddd;
+    color: #333;
+    margin: 6px;
+    padding: 12px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .dropdown button:hover {
+    background: #0b5ed7;
+    color: white;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  /* Job Section */
+  .job-section {
+    max-width: 1100px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .job-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.3s;
+  }
+  .job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+  .job-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .job-card h3 {
+    color: #0b5ed7;
+    margin: 10px 15px 5px 15px;
+    font-size: 18px;
+  }
+  .job-card p {
+    margin: 0 15px 10px 15px;
+    font-size: 14px;
+    color: #555;
+  }
+  .job-card a.read-more {
+    display: inline-block;
+    margin: 0 15px 15px 15px;
+    background: #0b5ed7;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+  .job-card a.read-more:hover {
+    background: #073d94;
+  }
+
+  /* Footer */
+  footer {
+    background: #083c9a;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+  }
+
+  @media(max-width: 600px){
+    header {font-size: 20px;}
+    .main-btn {font-size: 18px;}
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>सरकारी नौकरी पोर्टल - JaruriSuchna XYZ</header>
+
+<!-- Navigation -->
+<nav>
+  <a href="#">🏠 Home</a>
+  <a onclick="toggleDropdown()">📰 Sarkari Naukri</a>
+  <a href="https://erojgar.cg.gov.in/LandingSite/hi/Vacancies.aspx">🏢 Private Jobs</a>
+  <a href="#">📄 Admit Card</a>
+ 
+</nav>
+
+<!-- Main Button + Dropdown -->
+<div class="menu-container">
+  <button class="main-btn" onclick="toggleDropdown()">🚀 Sarkari Naukri</button>
+
+  <div class="dropdown" id="dropdownMenu">
+  <a href="https://vyapamcg.cgstate.gov.in/" >  <button onclick="loadJobs('govt.job')">🎯 Vyapam</button> </a>
+  <a href="https://www.rrbchennai.gov.in/" > <button onclick="loadJobs('govt.job')">🚆 Railway</button></a>
+    <a href="https://ssc.nic.in/" > <button onclick="loadJobs('govt.job')">🏢 SSC</button></a>
+ <a href="https://upsconline.nic.in/"  > <button onclick="loadJobs('govt.job')">📘 UPSC</button> </a>
+    <a href="https://cgpolice.gov.in/" ><button onclick="loadJobs('govt.job')">👮 Police</button> </a>
+   <a href="https://www.rbi.org.in/" > <button onclick="loadJobs('govt.job')">🏦 Bank</button> </a>
+  <a href="https://www.jarurisuchna.xyz/search/label/govt.job" >  <button onclick="loadJobs('govt.job')">📋 Other Govt Jobs</button> </a>
+  </div>
+</div>
+
+<!-- Job Section -->
+<section class="job-section" id="govtJobs">
+  <p style="text-align:center;">⏳ सरकारी नौकरियाँ लोड हो रही हैं...</p>
+</section>
+
+<!-- Footer -->
+<footer>© 2025 JaruriSuchna XYZ | Contact: info@jarurisuchna.xyz</footer>
+
+<!-- Script -->
+<script>
+function toggleDropdown() {
+  const dropdown = document.getElementById("dropdownMenu");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
+
+// JSONP callback function
+function showPosts(json) {
+  const container = document.getElementById("govtJobs");
+  const posts = json.feed.entry || [];
+  let html = "";
+
+  posts.forEach(post => {
+    const title = post.title.$t;
+    const link = post.link.find(l => l.rel === "alternate").href;
+
+    // Thumbnail
+    let thumbnail = "";
+    if(post.media$thumbnail){
+      thumbnail = post.media$thumbnail.url.replace("s72-c","s400");
+    } else {
+      const content = post.content ? post.content.$t : "";
+      const imgMatch = content.match(/<img[^>]+src="([^">]+)/);
+      thumbnail = imgMatch ? imgMatch[1] : "https://via.placeholder.com/400x180?text=No+Image";
+    }
+
+    const summary = post.summary ? post.summary.$t.substring(0,100) + "..." : "";
+
+    html += `
+      <div class="job-card">
+        <img src="${thumbnail}" alt="${title}">
+        <h3>${title}</h3>
+        <p>${summary}</p>
+        <a href="${link}" target="_blank" class="read-more">👉 Read More</a>
+      </div>`;
+  });
+
+  container.innerHTML = html || "<p style='text-align:center;'>❌ कोई पोस्ट उपलब्ध नहीं।</p>";
+}
+
+// Load posts using JSONP
+function loadJobs(label) {
+  document.getElementById("govtJobs").innerHTML = "<p style='text-align:center;'>🔄 Loading jobs...</p>";
+
+  const oldScript = document.getElementById("jsonpScript");
+  if(oldScript) oldScript.remove();
+
+  const script = document.createElement("script");
+  script.id = "jsonpScript";
+  script.src = `https://www.jarurisuchna.xyz/feeds/posts/default/-/${label}?alt=json-in-script&callback=showPosts`;
+  document.body.appendChild(script);
+}
+
+// Default load
+window.onload = () => loadJobs("govt.job");
+</script>
+
+</body>
+</html>
